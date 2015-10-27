@@ -1,0 +1,8 @@
+{
+    "require": {
+        "slim/slim": "^2.6",
+        "php-curl-class/php-curl-class": "dev-master",
+        "twig/twig": "^1.22",
+        "php-activerecord/php-activerecord": "^1.1"
+    }
+}

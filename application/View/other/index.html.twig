@@ -1,0 +1,8 @@
+{% extends 'default_theme.html.twig' %}
+{% block layout %}
+    {% embed 'default_layout.html.twig' %}
+        {% block content %}
+			<h1>Welcome to Other</h1>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

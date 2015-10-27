@@ -1,0 +1,12 @@
+{% extends 'default_theme.html.twig' %}
+{% block layout %}
+    {% embed 'default_layout.html.twig' %}
+        {% block content %}
+        <ul>
+			{%  for domain in data %}
+				<li>{{ domain }}</li>	
+			{% endfor %}		
+		</ul>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
