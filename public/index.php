@@ -3,8 +3,9 @@
 	include_once '../application/Bootstrap.php';
 					
 	$app = new \Slim\Slim(array(
-		'debug' => true,
-		'mode' 	=> 'development'
+		'debug' 		=> true,
+		'mode' 			=> 'development',
+		'log.enabled' 	=> true
 	));
 	
 	$bootstrap = new Bootstrap();

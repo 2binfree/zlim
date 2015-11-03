@@ -75,7 +75,10 @@ class Bootstrap {
 				// compute view path
 				$viewPath = $route['controller'] . '/' . $route['action'] . '.html.twig';
 				// call template renderer with data
-				echo $app->twig->render($viewPath, $data);
+				// all actions with an underscore on the first character are not rendered 
+				if (0 !== strpos($route['action'], '_')){
+					echo $app->twig->render($viewPath, $data);
+				}
 			})->name($name);
 		}
 	}

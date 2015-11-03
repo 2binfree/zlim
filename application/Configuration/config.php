@@ -10,19 +10,24 @@
  */
 return array(
 	'db'	=> array('host'	 	=> '127.0.0.1',
-					 'dbname'	=> 'Domain',
+					 'dbname'	=> 'analysis',
 					 'user'		=> 'root', 
 					 'pwd'		=> 't3rr3aux'),
-		
+	'db_rvip' => array('host'	 	=> '127.0.0.1',
+					 'dbname'	=> 'analysis',
+					 'user'		=> 'root', 
+					 'pwd'		=> 't3rr3aux'),
 	'route'	=> array(
 					'home' => array(
 							'path'			=> '/',
 							'controller'	=> 'Home',
 							'action'		=> 'index'),
-					'other' => array(
-							'path'			=> '/pouf',
-							'controller'	=> 'Other',
-							'action'		=> 'index')),
+					'fd_refresh' => array(
+							'path'			=> '/refresh',
+							'controller'	=> 'Home',
+							'action'		=> '_refresh')),
+	'logTable' => array(
+					'name' => 'log_import'),
 	'opendata' => array(
 					'key' => 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiNTYxY2U0Y2JjNzUxZGYwNWNkY2RiYjQ4IiwidGltZSI6MTQ0NDczNDE5Ni4wMTg0MTJ9.7AwJ1BdlaLbxyX1kw6bE6tuShD4LS3XW3QmBTQlE7fI')
 		

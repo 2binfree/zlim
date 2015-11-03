@@ -1,12 +1,32 @@
 {% extends 'default_theme.html.twig' %}
 {% block layout %}
+	<script src="/js/home/home.js"></script>
     {% embed 'default_layout.html.twig' %}
         {% block content %}
+        <h3>Total des FD : {{ data.total }} - [<a href="#" id="refreshLink">Refresh</a>]</h3>
         <ul>
-			{%  for domain in data %}
+			{%  for domain in data.fortress %}
 				<li>{{ domain }}</li>	
 			{% endfor %}		
-		</ul>
+		</ul>		
         {% endblock %}
     {% endembed %}
-{% endblock %}
+		<!--- modals --->		
+		<div class="modal fade" id="refreshModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Demande de mise à jour des données</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>Rafraichissement des données en cours. Rechargez la page pour voir les modifications</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->		  
+    {% endblock %}      
+

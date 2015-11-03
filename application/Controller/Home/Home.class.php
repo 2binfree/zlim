@@ -2,7 +2,7 @@
 namespace Controller\Home;
 
 use \Curl\Curl;
-use Model\Domain;
+//use Model\Fortress;
 
 class Home extends \Controller\Controller {
 	
@@ -18,11 +18,19 @@ class Home extends \Controller\Controller {
 // 		die;
 
 		
-		$records = Domain::find('all', array('select' => 'name'));
+		$records = \Model\Fortress::find('all', array('select' => 'name'));
+		$fortress = array();
 		foreach($records as $record){
-			$data[] = $record->name;
+			$fortress[] = $record->name;
 		}
-		//print_r($data);die;
+		$data["total"] = count($fortress);
+		$data["fortress"] = $fortress;
 		return array("data"	=> $data);
+	}
+	
+	public function _refresh(){
+		$fortress = new \Model\Fortress();
+		
+		//return array();
 	}
 }
