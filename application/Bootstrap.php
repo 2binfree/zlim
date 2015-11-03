@@ -38,16 +38,17 @@ class Bootstrap {
 	 */
 	public function initDb(){
 		$config = $this->app->config;
-		$dbPath = "mysql://" . 
-				  $config['db']['user'] . ":" . 
-				  $config['db']['pwd'] . "@" . 
-				  $config['db']['host'] . "/" .
-				  $config['db']['dbname'];
-		ActiveRecord\Config::initialize(function($cfg) use ($dbPath){
+		$locale = $config['db'];
+		$rvip = $config['db_rvip'];
+		$dbPathLocale = "mysql://" . $locale['user'] . ":" . $locale['pwd'] . "@" . $locale['host'] . "/" . $locale['dbname'];
+		$dbPathRvip = "mysql://" . $rvip['user'] . ":" . $rvip['pwd'] . "@" . $rvip['host'] . "/" . $rvip['dbname'];
+		$connections = array(
+			'domadb'	=> $dbPathLocale,
+			'rvipdb'	=> $dbPathRvip
+		);
+		ActiveRecord\Config::initialize(function($cfg) use ($connections){
 			$cfg->set_model_directory(__DIR__ . '/Model');
-			$cfg->set_connections(array(
-					'development' => $dbPath
-			));
+			$cfg->set_connections($connections);
 		});				
 	}
 	/**

@@ -13,10 +13,10 @@ return array(
 					 'dbname'	=> 'analysis',
 					 'user'		=> 'root', 
 					 'pwd'		=> 't3rr3aux'),
-	'db_rvip' => array('host'	 	=> '127.0.0.1',
-					 'dbname'	=> 'analysis',
-					 'user'		=> 'root', 
-					 'pwd'		=> 't3rr3aux'),
+	'db_rvip' => array('host'	 	=> 'aws-rvip-sql-pr-cluster.cluster-cluzo6qltpof.eu-west-1.rds.amazonaws.com',
+					 'dbname'	=> 'rvipdb',
+					 'user'		=> 'la_user', 
+					 'pwd'		=> '5qN3QKW8zPNp9sk'),
 	'route'	=> array(
 					'home' => array(
 							'path'			=> '/',

@@ -2,6 +2,7 @@
 namespace Controller\Home;
 
 use \Curl\Curl;
+use ActiveRecord;
 //use Model\Fortress;
 
 class Home extends \Controller\Controller {
@@ -29,8 +30,31 @@ class Home extends \Controller\Controller {
 	}
 	
 	public function _refresh(){
-		$fortress = new \Model\Fortress();
-		
-		//return array();
+		$fortress = new \Model\Fortress();		
+		$requests = \Model\Request::find('all', 
+										array('select' => 'name, id, tld, hl, gl'),
+										array('joins' => 'geolocalisation'),
+										array('conditions' => array('fortress_pending_date is not null'))
+		);
+		$updated = 0;
+		foreach ($requests as $request){
+			$id = $request->id;
+			$tld = $request->geolocalisation->tld;
+			$hl = $request->geolocalisation->hl;
+			$gl = $request->geolocalisation->gl;
+			
+			if (false === $fortress->isExist($id, $tld, $gl, $hl)){
+				$newFortress = new \Model\Fortress();
+				$newFortress->name 			= $request->name;
+				$newFortress->source_id 	= $id;
+				$newFortress->tld 			= $tld;
+				$newFortress->gl 			= $gl;
+				$newFortress->hl 			= $hl;
+				$newFortress->save();
+				unset($newFortress);
+				$updated++;
+			}
+		}
+		echo json_encode($updated);
 	}
 }
